@@ -1,0 +1,39 @@
+{% extends 'result.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Images</title>{% load static %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+
+    
+</head>
+<body>
+
+<header>
+<div class="header" style="padding: 30px 10px;">
+  <a href="#default" class="logo" style="float:left;">Admin</a>
+  <div class="header-right" style="float:right;">
+  <a class="active" href="/addproduct.html">Add/Delete Product</a>  
+    <a href="#about">Details</a>
+  </div>
+</div>
+</header>
+<div class="row" styles="content: none;margin-top:5px;background-color:white">
+{% for val in raw %}
+<div class="col-sm" styles="">
+<img src="static/img/{{val.images2}}" height="90px" width="90px">
+<p>Name:{{ val.name2 }}</p>
+<p>Price:{{val.price2}}</p>
+<p>Total:{{val.count2}}</p>
+<p style="background-color:#ab0006">Payment not Done</p>
+
+</div>
+{% endfor %}
+</div>
+</div>
+
+{% endblock %}
+</body>
+</html>

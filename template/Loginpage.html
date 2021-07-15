@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Login Page</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% load static %}
+<script src="{% static 'jqueryslid.js' %}"></script>
+<head>
+<body style="background-color:grey;">
+<p id='p-header'> Welcome To Order management System</p>
+
+<!--USER-->
+<div class="container">
+
+ <div id='first'>
+ <form id='form' method='POST' action="Login">
+ {% csrf_token %}
+ <h3>Login to your <u>User</u> Account</h3>
+ <div id='formelement'>
+ <input type='text' name='username' placeholder="Enter username"><br>
+ <input type='email' name='email' placeholder="Enter Email"><br>
+ <input type='password' name='password' placeholder="Enter password"></br>
+ </div>
+ <input id='button' type='submit' value='SignIn'>
+ <p>Admin Login <a class='signin' href='#' id='user'> Click Here</a>
+ </form>
+ </div>
+</div>
+<!--Admin-->
+<div class="container">
+ <div id='second'>
+ <form id='form' method='POST'>
+  {% csrf_token %}
+
+ <h3>Login to your <b>Admin</b> Account</h3>
+ <div id='formelement'>
+ <input type='text' name='username' placeholder="Enter username"><br>
+ <input type='email' name='email' placeholder="Enter Email"><br>
+ <input type='password' name='password' placeholder="Enter password"></br>
+ </div>
+ <input id='button' type='submit' value='SignIn'>
+ <p>User Login <a class='signin' href='#' id='admin'> Click Here</a>
+ </form>
+ </div>
+</div>
+</body>
+</html>

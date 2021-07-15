@@ -1,0 +1,47 @@
+{% extends 'result.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Images</title>{% load static %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+
+    
+</head>
+<body>
+
+<header>
+<div class="header" style="padding: 30px 10px;">
+  <a href="#default" class="logo" style="float:left;">User</a>
+  <div class="header-right" style="float:right;">
+    <a class="active" href="/addcart.html">Your Cart</a>
+    <a href="#about">Details</a>
+  </div>
+</div>
+</header>
+
+<div class="row" styles="content: none;margin-top:5px;background-color:white">
+{% for val in raw %}
+<div class="col-sm" styles="">
+<img src="static/img/{{val.images}}" height="90px" width="90px">
+<p>Name:{{ val.name }}</p>
+<p>Price:{{val.price}}</p>
+<p>Total:{{val.count}}</p>
+<form id='form3' method = "POST" enctype="multipart/form-data" style="margin-top:10px;border:0px solid #000;">
+{% csrf_token %}
+<input type='hidden' name="id_order" value={{val.id1}} style="">
+{% if val.count > 0 %}
+<button type="submit">Buy</button>
+{% endif %}
+{% if val.count == 0%}
+<button style="background-color:red;pointer-events: none;" > End Stock</button>
+{% endif %}
+</form>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends 'result.html' %}
+{% block content %}
+<html>
+<head>
+<title>Admin Home Page</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<script>
+function myFunction() {
+  var x = document.getElementById("form1");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+<head>
+<body>
+<header>
+<div class="header" style="padding: 30px 10px;">
+  <a href="#default" class="logo" style="float:left;">Admin</a>
+  <div class="header-right" style="float:right;">
+    <a class="active" href="/adminhomepage.html">Show Product</a>
+    <a href="#contact">Orders</a>
+    <a href="#about">Intro</a>
+  </div>
+</div>
+</header>
+<h3>Add Product</h3>
+<form id='form1' method = "POST" enctype="multipart/form-data" style="margin-top:10px">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Upload</button>
+</form>
+<!--
+<h3>Update Product</h3>
+<form id='form1' method = "POST" enctype="multipart/form-data" style="margin-top:10px">
+        {% csrf_token %}
+        <tr><th><label for="id_name">Name:</label></th><td><input type="text" name="name" maxlength="255" required id="id_name"></td></tr>
+<tr><th><label for="id_price">Price:</label></th><td><input type="number" name="price" required id="id_price"></td></tr>
+<tr><th><label for="id_count">Count:</label></th><td><input type="number" name="count" required id="id_count"></td></tr>
+        <button type="submit">Upload</button>
+        <button type="submit">Upload</button>
+</form>
+-->
+<h3>Delete Product<h3>
+<form id='form1' method = "PUT" style="margin-top:10px">
+        <input type="text" placeholder="Product ID" name="id_del">
+<button type="submit">Delete</button>
+</form>
+{% endblock %}
+</body>
+</html>

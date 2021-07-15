@@ -1,0 +1,47 @@
+{% extends 'result.html' %}
+{% block content %}
+<html>
+<head>
+<title>Admin Home Page</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% load static %}
+<script src="{% static 'jqueryslid.js' %}"></script>{% load static %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<script>
+function myFunction() {
+  var x = document.getElementById("form1");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+<head>
+<body>
+<header>
+<div class="header" style="padding: 30px 10px;">
+  <a href="#default" class="logo" style="float:left;">Admin</a>
+  <div class="header-right" style="float:right;">
+    <a class="active" href="/addproduct.html">Add/Delete Product</a>
+    <a href="/order.html">Orders</a>
+    <a href="#about">Intro</a>
+  </div>
+</div>
+</header>
+
+<div class="row" styles="content: none;">
+{% for val in raw %}
+<div class="col-sm">
+<img src="static/img/{{val.images}}" height="90px" width="90px">
+<p>Name:{{ val.name }}</p>
+<p>Price:{{val.price}}</p>
+<p>Total:{{val.count}}</p>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}
+</body>
+</html>
